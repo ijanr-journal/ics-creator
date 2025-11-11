@@ -1,0 +1,12 @@
+name: ics-creator
+title: ics-creator
+username: saryace
+account: saryace
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16035222
+bundleId: 11164309
+url: https://saryace.shinyapps.io/ics-creator/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

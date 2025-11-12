@@ -28,10 +28,12 @@ fold_ical <- function(txt) {
 }
 
 build_ics <- function(summary, start_date, days, description = "", location = "Online-OJS") {
-  dtstamp <- format(with_tz(Sys.time(), "UTC"), "%Y%m%dT%H%M%SZ")
-  dtstart <- format(as.Date(start_date), "%Y%m%d")
-  dtend   <- format(as.Date(start_date) + days, "%Y%m%d")
-  uid     <- paste0(format(Sys.time(), "%Y%m%dT%H%M%SZ"), "-", digest::digest(runif(1)), "@shiny-issn")
+  dtstamp  <- format(with_tz(Sys.time(), "UTC"), "%Y%m%dT%H%M%SZ")
+  final_day <- as.Date(start_date) + days  # only the final day
+  
+  uid    <- paste0(format(Sys.time(), "%Y%m%dT%H%M%SZ"), "-", digest::digest(runif(1)), "@shiny-issn")
+  dtstart <- format(final_day, "%Y%m%d")
+  dtend   <- format(final_day + 1, "%Y%m%d")  # DTEND is exclusive for all-day
   
   lines <- c(
     "BEGIN:VCALENDAR",
